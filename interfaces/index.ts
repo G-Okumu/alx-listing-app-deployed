@@ -31,3 +31,13 @@ export interface PropertyProps {
     discount:string,
     reviews: any[]
 }
+
+export interface BookingDetailsProps {
+    propertyId: number;
+    propertyName: string;
+    startDate: string;
+    endDate: string;
+    totalNights: number;
+    price: number;
+    bookingFee: number;
+}
