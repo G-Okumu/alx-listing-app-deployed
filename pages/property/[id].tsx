@@ -4,6 +4,7 @@ import { PropertyGallery } from "@/components/common/PropertyGallery";
 import { PropertyReviews } from "@/components/common/PropertyReviews";
 import { BookingCard } from "@/components/booking/BookingForm";
 import { useParams } from "next/navigation";
+import { PropertyDetailApiaData } from "@/interfaces";
 
 // Mock data for the property
 const missingPropertyData = {
@@ -39,24 +40,20 @@ const missingPropertyData = {
 }
 
 export default function PropertyDetailPage() {
-  let data = JSON.parse(localStorage.getItem("properties") || "{}");
-  let param = useParams();
+  let data;
+
+  if (typeof window !== "undefined") {
+    data = JSON.parse(localStorage.getItem("properties") || "{}");
+  }
+
+  const param = useParams();
 
 
   if (!data || data.length === 0) {
     return <div className="text-center text-red-500">No property data found.</div>;
   }
 
-  const propertyData = data.find((item: any) => item.zpid.toString() === param.id);
-
-  let amenities = [
-        `${propertyData.beds ?? "?"} Beds`,
-        `${propertyData.baths ?? "?"} Baths`,
-        `${propertyData.livingArea ?? "?"} sqft`,
-      ]
-
-
-  console.log(propertyData);
+  const propertyData = data.find((item: PropertyDetailApiaData) => item.zpid.toString() === param.id);
 
 
   return (

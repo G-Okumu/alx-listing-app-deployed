@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge"
 import { Star, Heart } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { PropertyCardProps } from "@/interfaces"
+import Image from "next/image"
 
 export function PropertyCard({
   id,
@@ -22,7 +23,7 @@ export function PropertyCard({
 
       <Card className="overflow-hidden hover:shadow-lg transition-shadow">
         <div className="relative">
-          <img src={image || "/placeholder.svg"} alt={title} className="w-full h-48 object-cover" />
+          <Image src={image || "/placeholder.svg"} width={500} height={48} alt={title} className="object-cover" />
           <Button size="sm" variant="ghost" className="absolute top-2 right-2 h-8 w-8 p-0 bg-white/80 hover:bg-white">
             <Heart className="h-4 w-4" />
           </Button>

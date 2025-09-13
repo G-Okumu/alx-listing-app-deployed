@@ -3,6 +3,7 @@ import axios from "axios"
 import { PropertyCard } from "@/components/common/PropertyCard"
 import { HeroSection } from "@/components/layout/Hero-Section";
 import { PropertyCardProps } from "@/interfaces";
+import { ApiProperty } from "@/interfaces";
 // import { properties } from "@/constants/index"
 
 import { Loader } from "lucide-react"
@@ -12,7 +13,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
 
-  function mapProperty(apiData: any) {
+  function mapProperty(apiData: ApiProperty) {
     return {
       id: apiData.zpid,
       image: apiData.imgSrc || "/assets/placeholder.svg",
@@ -57,7 +58,7 @@ export default function Home() {
           localStorage.setItem("properties", JSON.stringify(response.data));
         }
 
-        setProperties(response.data.map((item: any) => mapProperty(item)));
+        setProperties(response.data.map((item: ApiProperty) => mapProperty(item)));
 
       } catch (error) {
         console.error("Error fetching properties:", error);

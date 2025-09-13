@@ -4,7 +4,6 @@ import React, { ReactNode } from "react";
 import {Header} from "./Header";
 import {Footer} from "./Footer";
 import { PropertyTypes } from "../common/PropertyTypes";
-import { HeroSection } from "./Hero-Section";
 
 
 interface LayoutProps {

@@ -49,3 +49,29 @@ export interface BookingDetailsProps {
     price: number;
     bookingFee: number;
 }
+
+export interface PropertyDetailApiaData {
+  zpid: number;
+  contentType: string;
+  location: string;
+  host: string;
+  price: number;
+  reviewCount: number;
+  carouselPhotosComposable: {
+    baseUrl: string;
+    photoData: { photoKey: string }[];
+  };
+}
+
+export interface ApiProperty {
+  zpid: number;
+  imgSrc?: string;
+  beds?: number;
+  baths?: number;
+  addressCity?: string;
+  livingArea?: number;
+  price?: number;
+  zestimate?: number;
+  has3DModel?: boolean;
+  hasVideo?: boolean;
+}
