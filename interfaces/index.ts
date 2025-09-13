@@ -6,8 +6,15 @@ interface CardProps {
 }
 
 
-interface ButtonProps{
-    
+export interface PropertyCardProps {
+  image: string
+  title: string
+  location: string
+  rating: number
+  price: number
+  originalPrice?: number
+  badges?: string[]
+  amenities: string[]
 }
 
 export interface PropertyProps {
