@@ -1,6 +1,6 @@
 export function HeroSection() {
   return (
-    <div className="relative h-96 bg-gradient-to-r from-black/50 to-black/30 overflow-hidden">
+    <div className="relative h-96 bg-gradient-to-r from-black/50 to-black/30 overflow-hidden mx-auto max-w-7xl rounded-lg my-4">
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
