@@ -16,7 +16,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <>
       <Header />
       <PropertyTypes/>
-      <HeroSection/>
       <main className="min-h-screen bg-background">{children}</main>
       <Footer />
     </>

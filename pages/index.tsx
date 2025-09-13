@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 import { PropertyCard } from "@/components/common/PropertyCard"
+import { HeroSection } from "@/components/layout/Hero-Section";
 import { PropertyCardProps } from "@/interfaces";
 // import { properties } from "@/constants/index"
 
@@ -52,7 +53,9 @@ export default function Home() {
 
         // I am storing the response in locaStorage for getting details.
         // I will implement a proper hook for state management later.
-        localStorage.setItem("properties", JSON.stringify(response.data));
+        if (typeof window !== "undefined") {
+          localStorage.setItem("properties", JSON.stringify(response.data));
+        }
 
         setProperties(response.data.map((item: any) => mapProperty(item)));
 
@@ -77,21 +80,25 @@ export default function Home() {
   }
 
   return (
-    <div className="px-4 py-8">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {properties.map((property, index) => (
-            <PropertyCard key={index} {...property} />
-          ))}
-        </div>
+    <>
+      <HeroSection />
 
-        <div className="text-center mt-8">
-          <button className="bg-primary text-primary-foreground px-6 py-2 rounded-lg hover:bg-primary/90 transition-colors">
-            Show more
-          </button>
-          <p className="text-sm text-muted-foreground mt-2">Click to see more listings</p>
+      <div className="px-4 py-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {properties.map((property, index) => (
+              <PropertyCard key={index} {...property} />
+            ))}
+          </div>
+
+          <div className="text-center mt-8">
+            <button className="bg-primary text-primary-foreground px-6 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+              Show more
+            </button>
+            <p className="text-sm text-muted-foreground mt-2">Click to see more listings</p>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

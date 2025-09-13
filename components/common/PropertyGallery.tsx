@@ -27,7 +27,7 @@ export function PropertyGallery({ images }: PropertyGalleryProps) {
                             key={idx}
                             src={url}
                             alt={`Property photo ${idx + 1}`}
-                            width={100}
+                            width={400}
                             height={32}
                             className="object-cover rounded"
                         />
@@ -40,7 +40,7 @@ export function PropertyGallery({ images }: PropertyGalleryProps) {
                             key={idx}
                             src={url}
                             alt={`Property photo ${idx + 1}`}
-                            width={100}
+                            width={400}
                             height={32}
                             className="bject-cover rounded"
                         />
