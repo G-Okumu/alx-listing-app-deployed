@@ -4,9 +4,11 @@ import { PropertyCard } from "@/components/common/PropertyCard"
 import { PropertyCardProps } from "@/interfaces";
 // import { properties } from "@/constants/index"
 
+import { Loader } from "lucide-react"
+
 export default function Home() {
   const [properties, setProperties] = useState<PropertyCardProps[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
 
   function mapProperty(apiData: any) {
@@ -62,7 +64,11 @@ export default function Home() {
 
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <Loader className="animate-spin w-12 h-12 text-blue-500" />
+      </div>
+    )
   }
 
   return (
