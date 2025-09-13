@@ -1,8 +1,10 @@
 import React, { ReactNode } from "react";
 
 
-import Header from "./Header";
-import Footer from "./Footer";
+import {Header} from "./Header";
+import {Footer} from "./Footer";
+import { PropertyTypes } from "../common/PropertyTypes";
+import { HeroSection } from "./Hero-Section";
 
 
 interface LayoutProps {
@@ -13,7 +15,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
       <Header />
-      <main className="min-h-screen">{children}</main>
+      <PropertyTypes/>
+      <HeroSection/>
+      <main className="min-h-screen bg-background">{children}</main>
       <Footer />
     </>
   );
