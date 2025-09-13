@@ -7,6 +7,7 @@ interface CardProps {
 
 
 export interface PropertyCardProps {
+  id: number,
   image: string
   title: string
   location: string
