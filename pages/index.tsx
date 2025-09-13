@@ -1,7 +1,70 @@
-import {PropertyCard} from "@/components/common/PropertyCard"
-import { properties } from "@/constants/index"
+import { useState, useEffect } from "react"
+import axios from "axios"
+import { PropertyCard } from "@/components/common/PropertyCard"
+import { PropertyCardProps } from "@/interfaces";
+// import { properties } from "@/constants/index"
 
 export default function Home() {
+  const [properties, setProperties] = useState<PropertyCardProps[]>([]);
+  const [loading, setLoading] = useState(false);
+
+
+  function mapProperty(apiData: any) {
+    return {
+      image: apiData.imgSrc || "/assets/placeholder.svg",
+      title: `${apiData.beds ?? "?"} Bed, ${apiData.baths ?? "?"} Bath`,
+      city: apiData.addressCity || "Unknown City",
+      amenities: [
+        `${apiData.beds ?? "?"} Beds`,
+        `${apiData.baths ?? "?"} Baths`,
+        `${apiData.livingArea ?? "?"} sqft`,
+      ],
+      price: apiData.price ?? 0,
+      originalPrice: apiData.zestimate,
+      badges: [
+        apiData.has3DModel ? "3D Tour" : null,
+        apiData.hasVideo ? "Video" : null,
+      ].filter(Boolean) as string[],
+    }
+  }
+
+  useEffect(() => {
+
+    const options = {
+      method: 'GET',
+      url: `${process.env.NEXT_PUBLIC_API_BASE_URL}`,
+      params: {
+        page: '1',
+        region_id: '12447'
+      },
+      headers: {
+        'x-rapidapi-key': `${process.env.NEXT_PUBLIC_API_KEY}`,
+        'x-rapidapi-host': `${process.env.NEXT_PUBLIC_API_HOST}`
+      }
+    };
+
+    const fetchProperties = async () => {
+      try {
+        const response = await axios.request(options);
+
+        setProperties(response.data.map((item: any) => mapProperty(item)));
+
+      } catch (error) {
+        console.error("Error fetching properties:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProperties();
+  }, []);
+
+
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div className="px-4 py-8">
       <div className="mx-auto max-w-7xl">
