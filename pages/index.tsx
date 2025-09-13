@@ -13,6 +13,7 @@ export default function Home() {
 
   function mapProperty(apiData: any) {
     return {
+      id: apiData.zpid,
       image: apiData.imgSrc || "/assets/placeholder.svg",
       title: `${apiData.beds ?? "?"} Bed, ${apiData.baths ?? "?"} Bath`,
       city: apiData.addressCity || "Unknown City",
@@ -49,6 +50,10 @@ export default function Home() {
       try {
         const response = await axios.request(options);
 
+        // I am storing the response in locaStorage for getting details.
+        // I will implement a proper hook for state management later.
+        localStorage.setItem("properties", JSON.stringify(response.data));
+
         setProperties(response.data.map((item: any) => mapProperty(item)));
 
       } catch (error) {
@@ -65,7 +70,7 @@ export default function Home() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen">
+      <div className="flex justify-center">
         <Loader className="animate-spin w-12 h-12 text-blue-500" />
       </div>
     )
