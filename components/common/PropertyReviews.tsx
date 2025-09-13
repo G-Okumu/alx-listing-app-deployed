@@ -9,7 +9,7 @@ const reviews = [
   {
     id: 1,
     name: "Kerry",
-    avatar: "/avatar-1.jpg",
+    avatar: "/assets/placeholder.svg",
     timeOnPlatform: "2 years on ALX",
     date: "March 2024",
     tripType: "Family trip",
@@ -19,7 +19,7 @@ const reviews = [
   {
     id: 2,
     name: "Pooja",
-    avatar: "/avatar-2.jpg",
+    avatar: "/assets/placeholder.svg",
     timeOnPlatform: "1 years on ALX",
     date: "March 2024",
     tripType: "Family trip",
@@ -29,7 +29,7 @@ const reviews = [
   {
     id: 3,
     name: "Cindy & Ben",
-    avatar: "/avatar-3.jpg",
+    avatar: "/assets/placeholder.svg",
     timeOnPlatform: "1 years on ALX",
     date: "August 2023",
     tripType: "Family trip",
@@ -39,7 +39,7 @@ const reviews = [
   {
     id: 4,
     name: "Marnie",
-    avatar: "/avatar-4.jpg",
+    avatar: "/assets/placeholder.svg",
     timeOnPlatform: "5 years on ALX",
     date: "January 2023",
     tripType: "Family trip",
