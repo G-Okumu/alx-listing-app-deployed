@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [{
       protocol: 'https',
-      hostname: 'example.com',
+      hostname: 'photos.zillowstatic.com',
       port: '',
       pathname: '/**' 
     }],
