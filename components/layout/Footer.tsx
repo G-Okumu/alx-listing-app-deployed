@@ -2,7 +2,7 @@ export function Footer() {
   return (
     <footer className="bg-primary text-primary-foreground py-12 px-4">
       <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <div className="text-2xl font-bold mb-4">alx</div>
             <p className="text-sm text-primary-foreground/80 leading-relaxed">
